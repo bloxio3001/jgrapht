@@ -2330,17 +2330,17 @@ public class BoyerMyrvoldPlanarityInspector<V, E>
             boolean alongParentTraversal = firstOpposite != parentNext;
             boolean actionAppend = false, invert = false;
             
-                if (vOut == 0) {
-                    if (!alongParentTraversal) {
-                        invert = actionAppend = true;
-                    }
-                } else {
-                    if (alongParentTraversal) {
-                        invert = true;
-                    } else {
-                        actionAppend = true;
-                    }
+            if (vOut == 0) {
+                if (!alongParentTraversal) {
+                    invert = actionAppend = true;
                 }
+        	} else {
+                if (alongParentTraversal) {
+                    invert = true;
+                } else {
+                	actionAppend = true;
+                }
+        	}
            
             if (invert) {
                 parentEdge.sign = -1;
