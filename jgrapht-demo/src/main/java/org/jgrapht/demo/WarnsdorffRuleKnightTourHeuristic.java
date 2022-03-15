@@ -422,13 +422,17 @@ public class WarnsdorffRuleKnightTourHeuristic
      */
 
     private final static int[] DY = new int[] { 2, 1, -1, -2, -2, -1, 1, 2 };
-
+    
+    /**
+     * Random object initialization.
+     */   
+    private Random rand = new Random();
+    
     /**
      * Constructor.
      * 
      * @param n width and height of the board.
-     */
-
+     */   
     public WarnsdorffRuleKnightTourHeuristic(int n)
     {
         if (n < 3) {
@@ -725,7 +729,6 @@ public class WarnsdorffRuleKnightTourHeuristic
         }
 
         KnightTour tour = new KnightTour();
-        Random rand = new Random();
         int startX, startY;
         Pair<Integer, Integer> currentCell = new Pair<>(-1, -1);
         int visited;
