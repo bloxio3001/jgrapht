@@ -1718,6 +1718,7 @@ public class BoyerMyrvoldPlanarityInspector<V, E>
         @Override
         public Node next()
         {
+        	if (!hasNext()) throw new NoSuchElementException();
             Node t = current;
             current = current.nextOnOuterFace(prev);
             prev = t;
@@ -2328,7 +2329,7 @@ public class BoyerMyrvoldPlanarityInspector<V, E>
             Node firstOpposite = embedded.getFirst().getOpposite(this);
             boolean alongParentTraversal = firstOpposite != parentNext;
             boolean actionAppend = false, invert = false;
-            if (vIn == 0) {
+            
                 if (vOut == 0) {
                     if (!alongParentTraversal) {
                         invert = actionAppend = true;
@@ -2340,19 +2341,7 @@ public class BoyerMyrvoldPlanarityInspector<V, E>
                         actionAppend = true;
                     }
                 }
-            } else {
-                if (vOut == 0) {
-                    if (!alongParentTraversal) {
-                        invert = actionAppend = true;
-                    }
-                } else {
-                    if (alongParentTraversal) {
-                        invert = true;
-                    } else {
-                        actionAppend = true;
-                    }
-                }
-            }
+           
             if (invert) {
                 parentEdge.sign = -1;
                 edges.invert();
